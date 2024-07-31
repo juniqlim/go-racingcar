@@ -2,6 +2,7 @@ package main
 
 import (
 	"math/rand"
+	"strings"
 	"time"
 )
 
@@ -33,4 +34,13 @@ func (cs *Cars) move(numberGenerator func() int) {
 	for i := range cs.cars {
 		cs.cars[i].move(numberGenerator)
 	}
+}
+
+func NewCars(s string) Cars {
+	names := strings.Split(s, ",")
+	var cars []Car
+	for _, name := range names {
+		cars = append(cars, Car{name: name, position: 0})
+	}
+	return Cars{cars: cars}
 }

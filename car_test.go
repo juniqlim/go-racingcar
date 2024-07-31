@@ -24,3 +24,10 @@ func TestCarsMove(t *testing.T) {
 	cars.move(randomNumber)
 	assert.Contains(t, []int{1, 2}, cars.cars[0].position)
 }
+
+func TestStringToCars(t *testing.T) {
+	cars := NewCars("pobi,anna,show")
+	assert.Equal(t, 3, len(cars.cars))
+	assert.Equal(t, 0, cars.cars[0].position)
+	assert.Equal(t, "anna", cars.cars[1].name)
+}
