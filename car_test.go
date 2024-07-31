@@ -1,7 +1,12 @@
 package main
 
-import "testing"
+import (
+	"github.com/stretchr/testify/assert"
+	"testing"
+)
 
-func TestTest(t *testing.T) {
-	print("Test")
+func TestCarMove(t *testing.T) {
+	car := Car{name: "pobi", position: 0}
+	car.move(sixNumber)
+	assert.Equal(t, car.position, 1)
 }
