@@ -24,3 +24,13 @@ func randomNumber() int {
 func sixNumber() int {
 	return 6
 }
+
+type Cars struct {
+	cars []Car
+}
+
+func (cs *Cars) move(numberGenerator func() int) {
+	for i := range cs.cars {
+		cs.cars[i].move(numberGenerator)
+	}
+}
