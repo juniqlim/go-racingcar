@@ -80,15 +80,20 @@ func main() {
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).")
 	carNames, _ := reader.ReadString('\n')
-	carNames = strings.TrimSpace(carNames)
-	cars := NewCars(carNames)
+	cars := NewCars(strings.TrimSpace(carNames))
 	fmt.Println("시도할 회수는 몇회인가요?")
 	tryNumberStr, _ := reader.ReadString('\n')
-	tryNumberStr = strings.TrimSpace(tryNumberStr)
-	tryNumber, _ := strconv.Atoi(tryNumberStr)
+	tryNumber, _ := strconv.Atoi(strings.TrimSpace(tryNumberStr))
 
 	for i := 0; i < tryNumber; i++ {
 		cars.move(randomNumber)
 		cars.print()
 	}
+
+	winners := cars.winner()
+	winnerNames := []string{}
+	for _, winner := range winners {
+		winnerNames = append(winnerNames, winner.name)
+	}
+	fmt.Printf("%s가 최종 우승했습니다.\n", strings.Join(winnerNames, ", "))
 }
