@@ -51,6 +51,22 @@ func (cs *Cars) print() {
 	fmt.Println()
 }
 
+func (cs *Cars) winner() []Car {
+	maxPosition := 0
+	for _, car := range cs.cars {
+		if car.position > maxPosition {
+			maxPosition = car.position
+		}
+	}
+	var winners []Car
+	for _, car := range cs.cars {
+		if car.position == maxPosition {
+			winners = append(winners, car)
+		}
+	}
+	return winners
+}
+
 func NewCars(s string) Cars {
 	names := strings.Split(s, ",")
 	var cars []Car

@@ -31,3 +31,13 @@ func TestStringToCars(t *testing.T) {
 	assert.Equal(t, 0, cars.cars[0].position)
 	assert.Equal(t, "anna", cars.cars[1].name)
 }
+
+func TestWinner(t *testing.T) {
+	cars := Cars{cars: []Car{
+		{name: "pobi", position: 0},
+		{name: "anna", position: 1},
+		{name: "show", position: 1},
+	}}
+	assert.Equal(t, 2, len(cars.winner()))
+	assert.Equal(t, "anna", cars.winner()[0].name)
+}
